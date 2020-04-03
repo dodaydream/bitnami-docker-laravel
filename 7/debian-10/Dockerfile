@@ -17,6 +17,8 @@ RUN apt-get update && apt-get upgrade -y && \
     rm -r /var/lib/apt/lists /var/cache/apt/archives
 RUN mkdir /app && chown bitnami:bitnami /app
 
+RUN echo "opcache.revalidate_freq = 0" >> /opt/bitnami/php/etc/php.ini
+
 COPY rootfs /
 ENV BITNAMI_APP_NAME="laravel" \
     BITNAMI_IMAGE_VERSION="7.3.0-debian-10-r8" \
